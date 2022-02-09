@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,20 @@ export class AppComponent {
   email: string = "";
   password: string = "";
 
+  constructor(private userService: UserService) {}
+
   toggleModal() {
     (this.loginModal) ? this.loginModal = false : this.loginModal = true;
   }
 
   doNothing() {
 
+  }
+
+  login() {
+    // this.userService.login(this.email, this.password)
+    // .subscribe((payload) => {
+    //   console.log("Login response: ", payload)
+    // })
   }
 }
