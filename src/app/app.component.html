@@ -8,7 +8,7 @@
     <div>Condor</div>
   </div>
   <div class="user">
-    <div>About</div> | <div (click)="toggleModal()">Login</div>
+    <div> About </div> | <div (click)="toggleModal()"> Login </div>
   </div>
 </div>
 <div class="navbar">
@@ -51,12 +51,12 @@
     <form class="login-form">
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput [(ngModel)]="email">
+        <input matInput [(ngModel)]="email" name="email">
       </mat-form-field>
     
       <mat-form-field appearance="fill">
         <mat-label>Password</mat-label>
-        <input matInput [(ngModel)]="password">
+        <input matInput [(ngModel)]="password" name="password">
       </mat-form-field>
     </form>
     <button mat-button (click)="login()">Submit</button>

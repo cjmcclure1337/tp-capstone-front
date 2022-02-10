@@ -14,7 +14,8 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string) {
-    let body: {} = {email: email,password: password}
+    let body = {email: email, password: password}
+    console.log("Body: ", body)
     return this.http.post("https://vg-db-users.herokuapp.com/auth/getToken", body);
   }
 
@@ -22,7 +23,11 @@ export class UserService {
     //API call to create user, if it doesn't give a token then also call the login function
   }
 
-  getUser() {
+  setToken(token: string) {
+    this.token = token;
+  }
+
+  getToken() {
     return this.token;
   }
 }

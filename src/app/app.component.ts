@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { UserService } from './user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'InvestmentFront';
 
   loginModal: boolean = false;
@@ -14,6 +14,11 @@ export class AppComponent {
   password: string = "";
 
   constructor(private userService: UserService) {}
+
+  ngOnInit() {
+    this.loginModal = false;
+    this.clearForm();
+  }
 
   toggleModal() {
     (this.loginModal) ? this.loginModal = false : this.loginModal = true;
@@ -24,9 +29,16 @@ export class AppComponent {
   }
 
   login() {
-    // this.userService.login(this.email, this.password)
-    // .subscribe((payload) => {
-    //   console.log("Login response: ", payload)
-    // })
+    console.log("Email: ", this.email)
+    this.userService.login(this.email, this.password)
+    .subscribe((payload: any) => {
+      this.userService.setToken(payload.token);
+      this.ngOnInit();
+    })
+  }
+
+  clearForm() {
+    this.email = "";
+    this.password = "";
   }
 }
