@@ -12,13 +12,16 @@ import { MatInputModule } from "@angular/material/input"
 import { MatButtonModule } from "@angular/material/button";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatTableModule } from "@angular/material/table"
+import { MatIconModule } from "@angular/material/icon"
 
-import { PortfolioComponent } from './portfolio/portfolio.component'
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { ForexComponent } from './forex/forex.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    ForexComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component'
     MatInputModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
