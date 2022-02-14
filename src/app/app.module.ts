@@ -15,13 +15,15 @@ import { MatTableModule } from "@angular/material/table"
 import { MatIconModule } from "@angular/material/icon"
 
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { ForexComponent } from './forex/forex.component'
+import { ForexComponent } from './forex/forex.component';
+import { StocksComponent } from './stocks/stocks.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     PortfolioComponent,
-    ForexComponent
+    ForexComponent,
+    StocksComponent
   ],
   imports: [
     BrowserModule,
