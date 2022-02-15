@@ -9,9 +9,10 @@ import { StockAPIService } from '../stock-api.service';
 export class StocksComponent implements OnInit {
 
   stocks: any[] = [];
+  currentStocks: any[] = [];
   quantities: string[] = [];
 
-  currentUser: number = 5;
+  search: string = "";
 
   alertMessage: string = "";
   canBuy: boolean = true;
@@ -26,6 +27,7 @@ export class StocksComponent implements OnInit {
     this.stockAPI.getStockInformation()
     .subscribe((payload) => {
       this.stocks = payload
+      this.currentStocks = payload;
       this.stocks.map(() => {
         this.quantities.push("0");
       })
@@ -38,6 +40,13 @@ export class StocksComponent implements OnInit {
 
   clear(index: number) {
     this.quantities[index] = "0";
+  }
+
+  filter() {
+    console.log("Filtering for: ", this.search)
+    this.currentStocks = this.stocks.filter((stock) => {
+      return stock.stock_name.toLowerCase().includes(this.search.toLowerCase()) || stock.stock_symbol.toLowerCase().includes(this.search.toLowerCase());
+    })
   }
 
 }

@@ -13,8 +13,15 @@
     </ng-template>
 
     <ng-template #tableBlock>
+        <div class="filter">
+            <mat-form-field appearance="fill">
+                <mat-label>Filter by Symbol or Name</mat-label>
+                <input matInput type="text" [(ngModel)]="search" (keyup)="filter()" name="filter">
+              </mat-form-field>
+        </div>
+        
         <p>{{alertMessage}}</p>
-        <table mat-table [dataSource]="stocks" class="mat-elevation-z8">
+        <table mat-table [dataSource]="currentStocks" class="mat-elevation-z8">
             
             <!-- Symbol Column -->
             <ng-container matColumnDef="symbol">
