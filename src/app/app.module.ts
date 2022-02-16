@@ -13,17 +13,20 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 import { MatTableModule } from "@angular/material/table"
 import { MatIconModule } from "@angular/material/icon"
+import { MatCardModule } from "@angular/material/card"
 
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ForexComponent } from './forex/forex.component';
-import { StocksComponent } from './stocks/stocks.component'
+import { StocksComponent } from './stocks/stocks.component';
+import { HomeComponent } from './home/home.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     PortfolioComponent,
     ForexComponent,
-    StocksComponent
+    StocksComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { StocksComponent } from './stocks/stocks.component'
     MatButtonModule,
     MatProgressSpinnerModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

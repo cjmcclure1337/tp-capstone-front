@@ -1,0 +1,28 @@
+<h1>Welcome to Condor Financial!</h1>
+<div class="home">
+
+    <div *ngIf="loggedIn; then userCard else loginCard"></div>
+
+    <ng-template #loginCard>
+        <mat-card class="home-card">
+            <mat-card-title>Let's Get Started!</mat-card-title>
+            <mat-card-content>Use our virtual sandbox to virtually invest in stocks and currencies and see how you would do in real investments. Login to start your investment journey!</mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LOGIN</button>
+            </mat-card-actions>
+        </mat-card>
+    </ng-template>
+
+    <ng-template #userCard>
+        <mat-card class="home-card">
+            <mat-card-title>Welcome Back!</mat-card-title>
+            <mat-card-content>Check up on your portfolio, or go straight to the market to start making moves!</mat-card-content>
+            <mat-card-actions>
+                <button mat-button>PORTFOLIO</button>
+                <button mat-button>STOCKS</button>
+                <button mat-button>FOREX</button>
+            </mat-card-actions>
+        </mat-card>
+    </ng-template>
+    
+</div>
