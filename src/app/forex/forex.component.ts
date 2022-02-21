@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ForexAPIService } from '../forex-api.service';
+import { UserService } from '../user.service';
+import { PortfolioAPIService } from '../portfolio-api.service';
 
 @Component({
   selector: 'app-forex',
@@ -19,7 +21,7 @@ export class ForexComponent implements OnInit {
 
   displayedColumns: string[] = ["code", "name", "symbol", "price", "quantity", "buy"]
 
-  constructor(private forexAPI: ForexAPIService) { }
+  constructor(private forexAPI: ForexAPIService, private user: UserService, private portfolioService: PortfolioAPIService) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -35,6 +37,22 @@ export class ForexComponent implements OnInit {
 
   buy(index: number) {
     console.log("Buying: ", this.currencies[index]);
+
+    if(this.quantities[index]!=="0") {
+      this.canBuy = false;
+
+      this.portfolioService.buyInvestment({
+        type: "currency",
+        code: this.currencies[index].code,
+        quantity: this.quantities[index]
+      })
+      .subscribe((payload) => {
+        console.log("Response: ", payload);
+        this.alertMessage = `Purchased ${payload.quantity} ${payload.code} for \$${payload.purchasePrice * payload.quantity}!`
+        this.canBuy = true;
+      })
+      this.clear(index);
+    }
   }
 
   clear(index: number) {

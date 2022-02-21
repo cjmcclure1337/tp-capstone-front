@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StockAPIService } from '../stock-api.service';
+import { UserService } from '../user.service';
+import { PortfolioAPIService } from '../portfolio-api.service';
 
 @Component({
   selector: 'app-stocks',
@@ -20,7 +22,7 @@ export class StocksComponent implements OnInit {
 
   displayedColumns: string[] = ["symbol", "name", "price", "quantity", "buy"]
 
-  constructor(private stockAPI: StockAPIService) { }
+  constructor(private stockAPI: StockAPIService, private user: UserService, private portfolioService: PortfolioAPIService) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -36,6 +38,23 @@ export class StocksComponent implements OnInit {
   }
 
   buy(index: number) {
+    console.log("Buying: ", this.stocks[index]);
+
+    if(this.quantities[index]!=="0") {
+      this.canBuy = false;
+
+      this.portfolioService.buyInvestment({
+        type: "stock",
+        symbol: this.stocks[index].stock_symbol,
+        quantity: this.quantities[index]
+      })
+      .subscribe((payload) => {
+        console.log("Response: ", payload);
+        this.alertMessage = `Purchased ${payload.quantity} shares of ${payload.symbol} for \$${payload.purchasePrice * payload.quantity}!`
+        this.canBuy = true;
+      })
+      this.clear(index);
+    }
   }
 
   clear(index: number) {

@@ -18,4 +18,9 @@ export class PortfolioAPIService {
     let token = this.user.getToken();
     return this.http.get<any>(this.portfolioURL + this.portfolioEXT + token);
   }
+
+  buyInvestment(investment: object) {
+    let token = this.user.getToken();
+    return this.http.post<any>(this.portfolioURL + this.positionEXT + token, investment)
+  }
 }
