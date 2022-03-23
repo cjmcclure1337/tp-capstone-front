@@ -18,7 +18,8 @@ import { MatCardModule } from "@angular/material/card"
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ForexComponent } from './forex/forex.component';
 import { StocksComponent } from './stocks/stocks.component';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { SignupComponent } from './signup/signup.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HomeComponent } from './home/home.component'
     PortfolioComponent,
     ForexComponent,
     StocksComponent,
-    HomeComponent
+    HomeComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

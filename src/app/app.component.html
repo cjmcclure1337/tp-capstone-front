@@ -62,7 +62,7 @@
     <button mat-button (click)="login()">Submit</button>
     <button mat-button (click)="toggleModal()">Close</button>
     <div class="sign-up">
-      No account? <a href="">Sign up for free!</a>
+      No account? <a (click)="toggleModal()" routerLink="signup">Sign up for free!</a>
     </div>
   </div>
 </div>

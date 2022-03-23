@@ -1,0 +1,32 @@
+.signup {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-content:center;
+
+    margin: 10px;
+    padding: 10px;
+    h1 {
+        text-align: center;
+    }
+    .signup-form {
+
+        display: flex;
+        flex-direction:row;
+        justify-content: center;
+        align-content:center;
+
+        .signup-spacer {
+            flex: auto;
+        }
+        .signup-fields {
+            flex: auto;
+
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            align-content:center;
+        }
+    }
+
+}
