@@ -5,8 +5,18 @@
         <div class="signup-spacer"></div>
         <div class="signup-fields">
             <mat-form-field appearance="fill">
-                <mat-label>Email</mat-label>
-                <input matInput [(ngModel)]="email" name="email">
+                <mat-label>Username</mat-label>
+                <input matInput [(ngModel)]="user" name="user">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>First Name</mat-label>
+                <input matInput [(ngModel)]="first" name="first">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Last Name</mat-label>
+                <input matInput [(ngModel)]="last" name="last">
             </mat-form-field>
     
             <mat-form-field appearance="fill">

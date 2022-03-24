@@ -24,8 +24,19 @@ export class UserService {
     return this.http.post("https://vg-db-users.herokuapp.com/auth/getToken", body);
   }
 
-  createUser(user: string, password: string) {
-    //API call to create user, if it doesn't give a token then also call the login function
+  createUser(user: string, password: string, first: string, last: string) {
+
+    let body: {} = {
+      email: user,
+      password: password,
+      first: first,
+      last: last,
+      phone: "555-555-5555",
+      security_question: "Sec Q",
+      security_answer: "Sec A",
+    }
+    
+    return this.http.post("https://vg-db-users.herokuapp.com/users/", body);
   }
 
   setToken(token: string) {
