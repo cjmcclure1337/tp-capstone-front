@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { UserService } from '../user.service';
 
 @Component({
@@ -6,17 +6,20 @@ import { UserService } from '../user.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnChanges {
 
   loggedIn: boolean = false;
 
-  constructor(private user: UserService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    console.log("Token: ", this.user.getToken())
-    if(this.user.getToken().length > 0) {
+    if(this.userService.getToken().length > 0) {
       this.loggedIn = true;
     }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.ngOnInit();
   }
 
 }

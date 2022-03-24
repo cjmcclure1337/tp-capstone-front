@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { getMatIconNameNotFoundError } from '@angular/material/icon';
 
 
 @Injectable({
@@ -14,6 +15,8 @@ export class UserService {
   password: string = "";
   loginTime: Date = new Date();
   delay: number = 1800000;
+
+  first: string = "";
 
   constructor(private http: HttpClient) { }
 
@@ -50,10 +53,33 @@ export class UserService {
           this.login(this.email, this.password)
           .subscribe((payload: any) => {
             this.setToken(payload.token);
+            if(this.first.length === 0) {
+              this.http.post("https://vg-db-users.herokuapp.com/users/get", {token:payload.token})
+              .subscribe((payload: any) => {
+                //if additional user data is needed, it can be added from this payload
+                this.first = payload.first;
+              })
+            }
             return this.token;
           })
         }
     }
     return this.token;
   }
+
+  setName(first: string) {
+    this.first = first;
+  }
+
+  getName() {
+    console.log("Start name: ", this.first);
+    //if(this.first.length === 0 && this.token.length > 0) {
+    return this.http.post("https://vg-db-users.herokuapp.com/users/get", {token:this.token})
+    
+    // } else {
+    //   return this.first;
+    // }
+  }
 }
+
+

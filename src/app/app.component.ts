@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +11,22 @@ export class AppComponent implements OnInit {
   title = 'InvestmentFront';
 
   loginModal: boolean = false;
-  email: string = "";
+  user: string = "";
   password: string = "";
 
-  constructor(private userService: UserService) {}
+  loggedIn: boolean = false;
+  first: any = "";
+
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
     this.loginModal = false;
     this.clearForm();
+
+    if(this.userService.getToken().length > 0) {
+      this.loggedIn = true;
+      console.log("Logged in")
+    }
   }
 
   toggleModal() {
@@ -29,16 +38,22 @@ export class AppComponent implements OnInit {
   }
 
   login() {
-    console.log("Email: ", this.email)
-    this.userService.login(this.email, this.password)
+    console.log("Username: ", this.user)
+    this.userService.login(this.user, this.password)
     .subscribe((payload: any) => {
       this.userService.setToken(payload.token);
+      this.userService.getName()
+      .subscribe((response: any) => {
+        this.first = response.first;
+        this.userService.setName(response.first);
+      })
       this.ngOnInit();
+      this.router.navigateByUrl("portfolio");
     })
   }
 
   clearForm() {
-    this.email = "";
+    this.user = "";
     this.password = "";
   }
 }

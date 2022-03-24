@@ -8,7 +8,13 @@
     <div>Condor</div>
   </div>
   <div class="user">
-    <div> About </div> | <div (click)="toggleModal()"> Login </div>
+    <div *ngIf="loggedIn; then userLinks else loginLinks"></div>
+    <ng-template #loginLinks>
+      <div> About </div> | <div (click)="toggleModal()"> Login </div>
+    </ng-template>
+    <ng-template #userLinks>
+      <div> About </div> | <div> Welcome, {{first}}! </div>
+    </ng-template>
   </div>
 </div>
 <div class="navbar">
@@ -50,8 +56,8 @@
     </div>
     <form class="login-form">
       <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput [(ngModel)]="email" name="email">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="user" name="user">
       </mat-form-field>
     
       <mat-form-field appearance="fill">
