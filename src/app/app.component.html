@@ -10,10 +10,10 @@
   <div class="user">
     <div *ngIf="loggedIn; then userLinks else loginLinks"></div>
     <ng-template #loginLinks>
-      <div> About </div> | <div (click)="toggleModal()"> Login </div>
+      <div> About </div> &nbsp; | &nbsp; <div (click)="toggleModal()"> Login </div>
     </ng-template>
     <ng-template #userLinks>
-      <div> About </div> | <div> Welcome, {{first}}! </div>
+      <div> About </div> &nbsp; | &nbsp; <div> Welcome, {{first}}! </div>
     </ng-template>
   </div>
 </div>

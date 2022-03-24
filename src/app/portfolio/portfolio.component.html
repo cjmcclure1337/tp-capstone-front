@@ -11,6 +11,13 @@
     </ng-template>
 
     <ng-template #portfolioBlock>
+
+        <div *ngIf="(!(stocks.length || currencies.length)); then emptyBlock"></div>
+
+        <ng-template #emptyBlock>
+            <p>Your portfolio is empty! Try purchasing some assets at our &nbsp; <a routerLink="/stocks">Stocks</a> &nbsp; or  &nbsp; <a routerLink="/forex"> Forex</a> &nbsp; marketplaces.</p>
+        </ng-template>
+        
         <p>{{stockMessage}}</p>
         <h1 *ngIf="stocks.length > 0">Stocks</h1>
         <table mat-table [dataSource]="stocks" class="mat-elevation-z8" *ngIf="stocks.length > 0">
