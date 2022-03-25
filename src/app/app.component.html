@@ -10,10 +10,10 @@
   <div class="user">
     <div *ngIf="loggedIn; then userLinks else loginLinks"></div>
     <ng-template #loginLinks>
-      <div> About </div> &nbsp; | &nbsp; <div (click)="toggleModal()"> Login </div>
+      <div routerLink="about"> About </div> &nbsp; | &nbsp; <div (click)="toggleModal()"> Login </div>
     </ng-template>
     <ng-template #userLinks>
-      <div> About </div> &nbsp; | &nbsp; <div> Welcome, {{first}}! </div>
+      <div routerLink="about"> About </div> &nbsp; | &nbsp; <div> Welcome, {{first}}! </div>
     </ng-template>
   </div>
 </div>
@@ -44,7 +44,7 @@
   </div>
   <div class="footer-notes">
     <div>Website for demonstration purposes only</div>
-    <div>Design by Chris McClure <a href="https://github.com/cjmcclure1337">(Github)</a> <a href="https://www.linkedin.com/in/christopher-mcclure-79675473/">(LinkedIn)</a></div>
+    <div>Design by <a href="https://cjmccluresoftware.web.app/#/">Chris McClure</a>&nbsp;(<a href="https://www.linkedin.com/in/christopher-mcclure-79675473/">LinkedIn</a>)</div>
     <div>Logo by <a href="https://lorcblog.blogspot.com/">Lorc</a></div>
   </div>
 </div>

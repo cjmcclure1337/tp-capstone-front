@@ -19,7 +19,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ForexComponent } from './forex/forex.component';
 import { StocksComponent } from './stocks/stocks.component';
 import { HomeComponent } from './home/home.component';
-import { SignupComponent } from './signup/signup.component'
+import { SignupComponent } from './signup/signup.component';
+import { AboutComponent } from './about/about.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SignupComponent } from './signup/signup.component'
     ForexComponent,
     StocksComponent,
     HomeComponent,
-    SignupComponent
+    SignupComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
